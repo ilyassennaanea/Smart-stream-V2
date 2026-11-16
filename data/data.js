@@ -1,31 +1,29 @@
-import { loader } from '../js/ui.js'
-
+const API_Url = 'https://6af349b1d2377d6c3704d490.mockapi.io/api/v1/channels'
 export async function getData() {
-   try{
-    const respense = await fetch('https://6af42fce55a1de7dcf03ae98.mockapi.io/smartStream/channels')
-   if(!respense.ok){
-   if(respense.status==404){
-    console.log('ressource introuvable')
-    throw Error (`Error is :${respense.status}`)
-   }
-   if(respense.status==500){
-    console.log('erreur serveur')
-    throw Error(`Error is : ${respense.status}`)
-   }
-   }
-   if(respense.ok){
-    console.log("success")
-  }
-   const data = await respense.json();
-   localStorage.setItem("channels",JSON.stringify(data));
-   return data ;
-   }catch(error){
-   console.error(error)
+    try {
+        const respense = await fetch(API_Url)
+        if (!respense.ok) {
+            if (respense.status == 404) {
+                console.log('ressource introuvable')
+                throw Error(`${respense.status}`)
+            }
+            if (respense.status == 500) {
+                console.log('erreur serveur')
+                throw Error(` ${respense.status}`)
+            }
+        }
+        if (respense.ok) {
+            console.log("success")
+        }
+        const data = await respense.json();
+        return data;
+    } catch (error) {
+        console.error(error)
+        alert(error)
+    } finally {
 
-   } finally {
-      setTimeout(() => {
-         loader();
-      }, 200);
-   }
-    
+        const spiner = document.getElementById('loader');
+        spiner.classList.add('hidden')
+    }
+
 }
