@@ -27,3 +27,18 @@ export async function getData() {
     }
 
 }
+
+export async function updateChannel(id, changes) {
+    const response = await fetch(`${API_Url}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(changes)
+    }).then((Response) => {
+        if (!Response.ok) {
+            throw new Error(`Error HTTP : ${Response.status}`);
+        }
+        return Response.json();
+    });
+}
