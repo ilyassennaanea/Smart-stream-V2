@@ -1,8 +1,7 @@
-export function getCategories() {
-    const data = JSON.parse(localStorage.getItem('channels'))
-
+export async function getCategories() {
+    const data = await getData()
     const categories = [];
-
+// console.log(data)
     data.forEach((channel) => {
         if (!categories.includes(channel.category)) {
             categories.push(channel.category);
