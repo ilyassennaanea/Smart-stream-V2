@@ -42,3 +42,10 @@ export async function updateChannel(id, changes) {
         return Response.json();
     });
 }
+
+export async function DeleteChannel(id){
+    const response = await fetch(`${API_Url}/${id}`,{
+        method : 'DELETE'
+    })
+    return response
+}
