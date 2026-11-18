@@ -1,3 +1,5 @@
+import { getData } from "../data/data.js";
+
 export async function getCategories() {
     const data = await getData()
     const categories = [];
@@ -12,19 +14,22 @@ export async function getCategories() {
 }
 
 
+export async function getChannelsPerCategory(selectedCategory) {
 
+    const channels = await getData()
 
-export function getChannelsPerCategory(selectedCategory) {
-    const channels = JSON.parse(localStorage.getItem("channels"))
-    console.log(selectedCategory)
     if (selectedCategory === 'ALL') {
         return channels
     }
+
     let filtered  = []
+
     for (const channel of channels) {
-        if(channel.category == selectedCategory){
+
+        if(channel.category == selectedCategory && channel.isBlacklisted==false){
             filtered.push(channel)
         }
+
     }
 
     return filtered
