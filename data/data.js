@@ -27,7 +27,6 @@ export async function getData() {
     }
 
 }
-
 export async function updateChannel(id, changes) {
     const response = await fetch(`${API_Url}/${id}`, {
         method: 'PUT',
@@ -42,10 +41,24 @@ export async function updateChannel(id, changes) {
         return Response.json();
     });
 }
-
 export async function DeleteChannel(id){
     const response = await fetch(`${API_Url}/${id}`,{
         method : 'DELETE'
     })
     return response
+}
+
+export async function addChannel(channel) {
+    const response = await fetch(`${API_Url}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(channel)
+    }).then((Response) => {
+        if (!Response.ok) {
+            throw new Error(`Error HTTP : ${Response.status}`);
+        }
+        return Response.json();
+    });
 }
