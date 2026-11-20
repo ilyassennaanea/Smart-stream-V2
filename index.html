@@ -6,9 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Smart Stream TV, toutes vos chaînes en un seul endroit." />
   <script src="https://cdn.tailwindcss.com"></script>
-
-
-  <link
+<link
   href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
   rel="stylesheet"
 />
@@ -46,7 +44,10 @@
       <ul id="categoriList" class="space-y-2" >
         <li><button data-category="ALL" class="w-full rounded-lg  px-4 py-3 text-left text-sm font-medium hover:bg-white/10 categoryBnt">ALL Categorys</button>
         </li>
-
+        <li><button data-category="Favoris" class="flex justify-between w-full rounded-lg  px-4 py-3 text-left text-sm font-medium text-black bg-amber-50 categoryBnt">Favoris  <span>★</span></button>
+        </li>
+       <li class="flex"><button data-category="BlackListe" class="w-full rounded-lg  px-4 py-3 text-left text-sm font-medium hover:bg-red-500 categoryBnt">Black Liste </button><box-icon class="mr-4" name='star'></box-icon>
+        </li>
       </ul>
     </aside>
     <aside class="fixed top-[76px] right-0 w-100 border-l border-white/10 bg-[#111117] p-5 text-white shadow-2xl  " id="channelAside">
@@ -64,6 +65,17 @@
       </ul>
     </aside>
   </main>
+  <div id="popup" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center">
+  <form id="channelForm" class=" bg-white p-5 rounded-lg space-y-3">
+    <input name="channelNumber" placeholder="Numéro" class="number border-2 rounded-md text-black " required>
+    <input name="name" placeholder="Nom" class="name border-2 rounded-md text-black" required>
+    <input name="category" placeholder="Catégorie" class="category border-2 rounded-md text-black" required>
+    <input name="logo" placeholder="Lien du logo" class="logo border-2 rounded-md text-black" required>
+
+    <button type="button" id="closePopup" class="bg-red-500 rounded-md text-white p-1">Annuler</button>
+    <button type="submit" class="submit bg-green-500 rounded-md text-white p-1">Ajouter</button>
+  </form>
+</div>
   <footer class="border-t border-white/10 bg-white px-6 py-8 text-gray-400 mt-auto ">
     <div class="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
 
